@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include <math.h>
 #include <string.h>
+#include <math.h>
 #define TAM_NOME 50
 
 struct Pessoa{
@@ -17,13 +17,21 @@ void imprimeInterpretacaoIMC(double imc);
 
 int main(){
     struct Pessoa pessoa;
-    lerPessoa(&pessoa);
-    printf("\nPESSOA\n\n");
-    imprimirPessoa(pessoa);
+    char continuar;
+    do{
+        lerPessoa(&pessoa);
+        printf("\nPESSOA\n\n");
 
-    double imc = calculaIMC(pessoa);
-    printf("\n o seu IMC é %.1f\n", imc);
-    imprimeInterpretacaoIMC(imc);
+        imprimirPessoa(pessoa);
+        double imc = calculaIMC(pessoa);
+        printf("\nO seu IMC é: %.1f\n", imc);
+        imprimeInterpretacaoIMC(imc);
+        printf("\nDeseja calcular o IMC de outra pessoa? (s/n): ");
+        scanf(" %c", &continuar);
+
+    }while(continuar == 's' || continuar == 'S');
+
+    printf("\nPrograma encerrado.\n");
 
     return 0;
 }
@@ -32,26 +40,30 @@ void lerstr(char *str, int tam){
     fgets(str, tam, stdin);
     int len = strlen(str);
     if(str[len - 1] == '\n'){
-        str[len - 1] = '\0';
+        str[len - 1] = '\0'; // Remove o caractere de nova linha
     }
 }
 
 void lerPessoa(struct Pessoa *pessoa){
-    printf("Digite o seu nome: ");
+    printf("Digite seu nome: ");
+    getchar();  // Consome o '\n' deixado pela leitura anterior
     lerstr(pessoa->nome, TAM_NOME);
+    
     printf("Digite sua idade: ");
     scanf("%d", &pessoa->idade);
+    
     printf("Digite sua altura: ");
     scanf("%lf", &pessoa->altura);
+    
     printf("Digite seu peso: ");
     scanf("%lf", &pessoa->peso);
 }
 
 void imprimirPessoa(struct Pessoa pessoa){
-    printf("nome: %s\n", pessoa.nome);
-    printf("idade: %d\n", pessoa.idade);
-    printf("altura: %f\n", pessoa.altura);
-    printf("peso: %f\n", pessoa.peso);
+    printf("Nome: %s\n", pessoa.nome);
+    printf("Idade: %d\n", pessoa.idade);
+    printf("Altura: %.2f\n", pessoa.altura);
+    printf("Peso: %.2f\n", pessoa.peso);
 }
 
 double calculaIMC(struct Pessoa pessoa){
@@ -61,15 +73,15 @@ double calculaIMC(struct Pessoa pessoa){
 void imprimeInterpretacaoIMC(double imc){
     char classificacao[20];
     if(imc < 18.5){
-        strcpy(classificacao, "magreza");
+        strcpy(classificacao, "Magreza");
     }else if(imc < 25.0){
-        strcpy(classificacao, "normal");
+        strcpy(classificacao, "Normal");
     }else if(imc < 30.0){
-        strcpy(classificacao, "sobrepeso");
+        strcpy(classificacao, "Sobrepeso");
     }else if(imc < 40.0){
-        strcpy(classificacao, "obesidade");
+        strcpy(classificacao, "Obesidade");
     }else{
-        strcpy(classificacao, "obesidade grave");
+        strcpy(classificacao, "Obesidade grave");
     }
-    printf("classificação: %s\n", classificacao);
+    printf("Classificação: %s\n", classificacao);
 }
