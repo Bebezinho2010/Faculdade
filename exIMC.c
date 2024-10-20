@@ -40,13 +40,13 @@ void lerstr(char *str, int tam){
     fgets(str, tam, stdin);
     int len = strlen(str);
     if(str[len - 1] == '\n'){
-        str[len - 1] = '\0'; // Remove o caractere de nova linha
+        str[len - 1] = '\0';
     }
 }
 
 void lerPessoa(struct Pessoa *pessoa){
     printf("Digite seu nome: ");
-    getchar();  // Consome o '\n' deixado pela leitura anterior
+    getchar();  
     lerstr(pessoa->nome, TAM_NOME);
     
     printf("Digite sua idade: ");
