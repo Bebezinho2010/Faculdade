@@ -12,16 +12,30 @@ struct Estado{
 void lerstr(char *str, int tam);
 void ColetaDados(struct Estado estados[]);
 void imprimeEstado(struct Estado estado);
+void encontraMaiorMenorAcidente(struct Estado estados[], int *indiceMaior, int *indiceMenor);
+double PercentualAcidente(struct Estado estado);
 
 int main(){
 
     struct Estado estados[N_ESTADOS];
+    int indiceMaior;
+    int indiceMenor;
     ColetaDados(estados);
+    encontraMaiorMenorAcidente(estados, &indiceMaior, &indiceMenor);
 
     for(int i = 0; i < N_ESTADOS; i++){
-        printf("\nESTADO\n\n");
+        printf("\nESTADO\n");
         imprimeEstado(estados[i]);
+        double percentual = PercentualAcidente(estados[i]);
+        printf("Percentual de veículos envolvidos em acidentes: %.2f%%\n", percentual);
     }
+
+    printf("\nEstado com maior número de acidentes: ");
+    imprimeEstado(estados[indiceMaior]);
+
+    printf("\nEstado com menor número de acidentes: ");
+    imprimeEstado(estados[indiceMenor]);
+
     return 0;
 }
 
@@ -50,4 +64,24 @@ void imprimeEstado(struct Estado estado){
     printf("Estado: %s\n", estado.nome);
     printf("Número de veículos: %d\n", estado.veiculos);
     printf("Número de acidentes: %d\n", estado.acidente);
+}
+
+void encontraMaiorMenorAcidente(struct Estado estados[], int *indiceMaior, int *indiceMenor){
+    *indiceMaior = 0;
+    *indiceMenor = 0;
+    for(int i = 1; i < N_ESTADOS; i++){
+        if(estados[i].acidente > estados[*indiceMaior].acidente){
+            *indiceMaior = i;
+        }
+        if(estados[i].acidente < estados[*indiceMenor].acidente){
+            *indiceMenor = i;
+        }
+    }
+}
+
+double PercentualAcidente(struct Estado estado){
+    if(estado.veiculos == 0){
+        return 0.0;
+    }
+    return ((double)estado.acidente/estado.veiculos)*100;
 }
