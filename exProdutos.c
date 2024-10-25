@@ -16,6 +16,7 @@ void cadastraProduto(struct Produto *produtos, int *cont);
 void alterarValorUnitário(struct Produto *produtos, int cont, int codigo);
 double informarValorUnitario(struct Produto *produtos, int cont, int codigo);
 int informarEstoque(struct Produto *produtos, int cont, int codigo);
+void venda(struct Produto *produtos, int cont, int codigo, int qtd);
 
 int main(){
     struct Produto produtos[PRODUTOS];
@@ -80,4 +81,36 @@ int informarEstoque(struct Produto *produtos, int cont, int codigo){
         }
     }
     return -1;
+}
+
+void venda(struct Produto *produtos, int cont, int codigo, int qtd){
+    char confirmacao;
+    double total;
+    for(int i = 0; i < cont; i++){
+        if(produtos[i].codigo == codigo){
+            if(produtos[i].estoque == 0){
+                printf("Produto fora de estoque.\n");
+                return;
+            }
+            if(qtd > produtos[i].estoque){
+                printf("Estoque cheio.\n");
+                printf("Deseja efetivar a compra e zerar o estoque ?(s para sim, qualquer outra tecla para não: )");
+                getchar();
+                scanf("%c", &confirmacao);
+                if(confirmacao == 's' || confirmacao == 'S'){
+                    total = produtos[i].estoque * produtos[i].valorUnitario;
+                    produtos[i].estoque = 0;
+                    printf("Compra realizada. Valor total: R$ %.2f\n", total);
+                }else{
+                    printf("Venda cancelada.\n");
+                }
+            }else{
+                total = qtd * produtos[i].valorUnitario;
+                produtos[i].estoque -= qtd;
+                printf("Venda realizada. Valor total: R$ %.2f\n", total);
+            }
+            return;
+        }
+    }
+    printf("Produto não encontrado.\n");
 }
