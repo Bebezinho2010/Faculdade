@@ -14,6 +14,8 @@ void ColetaDados(struct Estado estados[]);
 void imprimeEstado(struct Estado estado);
 void encontraMaiorMenorAcidente(struct Estado estados[], int *indiceMaior, int *indiceMenor);
 double PercentualAcidente(struct Estado estado);
+double CalculaMediaAcidente(struct Estado estados[]);
+void EstadosAcimaDaMedia(struct Estado estados[], double media);
 
 int main(){
 
@@ -35,6 +37,11 @@ int main(){
 
     printf("\nEstado com menor número de acidentes: ");
     imprimeEstado(estados[indiceMenor]);
+
+    double MediaAcidentes = CalculaMediaAcidente(estados);
+    printf("\nMédia de acidentes no país: %.1f\n", MediaAcidentes);
+
+    EstadosAcimaDaMedia(estados, MediaAcidentes);
 
     return 0;
 }
@@ -84,4 +91,22 @@ double PercentualAcidente(struct Estado estado){
         return 0.0;
     }
     return ((double)estado.acidente/estado.veiculos)*100;
+}
+
+double CalculaMediaAcidente(struct Estado estados[]){
+    int total = 0;
+    for(int i = 0; i < N_ESTADOS; i++){
+        total += estados[i].acidente;
+    }
+    return (double)total / N_ESTADOS;
+}
+
+void EstadosAcimaDaMedia(struct Estado estados[], double media){
+    printf("\nEstados que estão acima da média de acidentes: ");
+    for(int i = 0; i < N_ESTADOS; i++){
+        if(estados[i].acidente > media){
+            imprimeEstado(estados[i]);
+            printf("\n");
+        }
+    }
 }
