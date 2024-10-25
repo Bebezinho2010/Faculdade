@@ -10,6 +10,7 @@ struct Estado{
 };
 
 void lerstr(char *str, int tam);
+void lerEstado(struct Estado *estado);
 void ColetaDados(struct Estado estados[]);
 void imprimeEstado(struct Estado estado);
 void encontraMaiorMenorAcidente(struct Estado estados[], int *indiceMaior, int *indiceMenor);
