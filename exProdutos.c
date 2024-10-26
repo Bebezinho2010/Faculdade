@@ -17,6 +17,9 @@ void alterarValorUnitário(struct Produto *produtos, int cont, int codigo);
 double informarValorUnitario(struct Produto *produtos, int cont, int codigo);
 int informarEstoque(struct Produto *produtos, int cont, int codigo);
 void venda(struct Produto *produtos, int cont, int codigo, int qtd);
+void atualizarEstoque(struct Produto *produtos, int cont, int codigo, int qtd);
+void exibirProduto(struct Produto *produtos, int cont);
+void exibirProdutosSemEstoque(struct Produto *produtos, int cont);
 
 int main(){
     struct Produto produtos[PRODUTOS];
@@ -113,4 +116,37 @@ void venda(struct Produto *produtos, int cont, int codigo, int qtd){
         }
     }
     printf("Produto não encontrado.\n");
+}
+
+void atualizarEstoque(struct Produto *produtos, int cont, int codigo, int qtd){
+    for(int i = 0; i < cont; i++){
+        if(produtos[i].codigo == codigo){
+            produtos[i].estoque = qtd;
+            printf("Quantidade de estoque atualizada.\n");
+            return;
+        }
+    }
+    printf("Produto não encontrado.\n");
+}
+
+void exibirProduto(struct Produto *produtos, int cont){
+    printf("\nPRODUTOS:\n");
+    for(int i = 0; i < cont; i++){
+        printf("Código: %d, descrição: %s\n", produtos[i].codigo, produtos[i].descricao);
+    }if(cont == 0){
+        printf("Nenhum produto encontrado.\n");
+    }
+}
+
+void exibirProdutosSemEstoque(struct Produto *produtos, int cont){
+    int estoqueZero = 0;
+    printf("\nPRODUTOS SEM ESTOQUE\n");
+    for(int i = 0; i < cont; i++){
+        if(produtos[i].estoque == 0){
+            printf("Código: %d, descrição: %s\n", produtos[i].codigo, produtos[i].descricao);
+            estoqueZero++;
+        }
+    }if(estoqueZero == 0){
+        printf("Não há produtos com estoque zero.\n");
+    }
 }
