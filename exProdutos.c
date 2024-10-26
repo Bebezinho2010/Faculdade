@@ -112,7 +112,7 @@ void cadastraProduto(struct Produto *produtos, int *cont){
         printf("Limite atingido.\n");
         return;
     }
-    struct Prodruto NovoProduto;
+    struct Produto NovoProduto;
     printf("Cadastro do Produto %d:\n", *cont + 1);
     printf("Código: ");
     scanf("%d", &NovoProduto.codigo);
