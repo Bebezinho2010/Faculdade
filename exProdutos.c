@@ -23,6 +23,79 @@ void exibirProdutosSemEstoque(struct Produto *produtos, int cont);
 
 int main(){
     struct Produto produtos[PRODUTOS];
+    int cont = 0;
+    int codigo, qtd, opcao;
+    do{
+        printf("\nMENU\n");
+        printf("Digite 1 para cadastrar um produto.\n");
+        printf("Digite 2 para alterar o valor unitário.\n");
+        printf("Digite 3 para consultar o valor unitário.\n");
+        printf("Digite 4 para consultar o estoque.\n");
+        printf("Digite 5 para realizar uma venda.\n");
+        printf("Digite 6 para atualizar o estoque.\n");
+        printf("Digite 7 para exibir os produtos.\n");
+        printf("Digite 8 para exibir produtos sem estoque.\n");
+        printf("Digite 9 para sair do programa.\n");
+        printf("Digite uma opção: ");
+        scanf("%d", &opcao);
+
+        switch(opcao){
+            case 1:
+                cadastraProduto(produtos, &cont);
+                break;
+            case 2:
+                printf("Digite o código do produto para alterar o seu valor unitário: ");
+                scanf("%d", &codigo);
+                alterarValorUnitário(produtos, cont, codigo);
+                break;
+            case 3:
+                printf("Digite o código do produto para consultar o valor unitário: ");
+                scanf("%d", &codigo);
+                double valor = informarValorUnitario(produtos, cont, codigo);
+                if(valor != -1){
+                    printf("O valor unitário do produto é: %.2f\n", valor);
+                }else{
+                    printf("Produto não encontrado.\n");
+                }
+                break;
+            case 4:
+                printf("Digite o código do produto para consultar estoque: ");
+                scanf("%d", &codigo);
+                int qtdEstoque = informarEstoque(produtos, cont, codigo);
+                if(qtdEstoque != -1){
+                    printf("A quantidade em estoque do produto é: %d\n", qtdEstoque);
+                }else{
+                    printf("Produto não encontrado.\n");
+                }
+                break;
+            case 5:
+                printf("Digite o código do produto para a venda: ");
+                scanf("%d", &codigo);
+                printf("Digite a quantidade desejada: ");
+                scanf("%d", &qtd);
+                venda(produtos, cont, codigo, qtd);
+                break;
+            case 6:
+                printf("Digite o código do produto para atualizar a quantidade em estoque: ");
+                scanf("%d", &codigo);
+                printf("Digite a nova quantidade em estoque: ");
+                scanf("%d", &qtd);
+                atualizarEstoque(produtos, cont, codigo, qtd);
+                break;
+            case 7:
+                exibirProduto(produtos, cont);
+                break;
+            case 8:
+                exibirProdutosSemEstoque(produtos, cont);
+                break;
+            case 9:
+                printf("Saindo do programa...\n");
+                break;
+            default:
+                printf("Opção inválida. Digite novamente.\n");
+        }
+
+    }while(opcao != 9);
     return 0;
 }
 
