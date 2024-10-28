@@ -1,0 +1,215 @@
+Primeira questão:
+
+Acre
+100000
+200
+Alagoas
+200000
+500
+Amapá
+120000
+150
+Amazonas
+300000
+800
+Bahia
+700000
+2000
+Ceará
+500000
+1200
+Distrito Federal
+400000
+1000
+Espírito Santo
+350000
+700
+Goiás
+600000
+1500
+Maranhão
+250000
+400
+Mato Grosso
+300000
+750
+Mato Grosso do Sul
+280000
+650
+Minas Gerais
+1000000
+2500
+Pará
+400000
+900
+Paraíba
+220000
+450
+Paraná
+800000
+1800
+Pernambuco
+600000
+1400
+Piauí
+210000
+420
+Rio de Janeiro
+900000
+2200
+Rio Grande do Norte
+230000
+470
+Rio Grande do Sul
+750000
+1700
+Rondônia
+150000
+300
+Roraima
+110000
+130
+Santa Catarina
+500000
+1300
+São Paulo
+2000000
+5000
+Sergipe
+180000
+380
+Tocantins
+160000
+340
+
+segunda questão:
+
+1
+101
+Caneta Azul
+1.50
+100
+1
+102
+Lápis Preto
+0.50
+200
+1
+103
+Caderno A4
+12.99
+50
+1
+104
+Borracha Branca
+0.75
+300
+1
+105
+Apontador de Metal
+2.00
+150
+1
+106
+Corretivo Líquido
+5.50
+75
+1
+107
+Grampeador Pequeno
+12.00
+40
+1
+108
+Régua 30cm
+3.20
+120
+1
+109
+Marcador de Texto Amarelo
+4.25
+60
+1
+110
+Cola Branca 500ml
+6.30
+90
+1
+111
+Papel Sulfite A4 - Pacote
+25.50
+35
+1
+112
+Cartolina Branca
+1.25
+500
+1
+113
+Tesoura Escolar
+4.75
+80
+1
+114
+Mochila Escolar
+45.00
+15
+1
+115
+Lancheira Térmica
+30.00
+10
+1
+116
+
+terceira questão
+
+1
+12346
+Maria Oliveira
+98765432100
+(11) 91234-5679
+1500.75
+1
+12347
+Carlos Santos
+12312312312
+(11) 91234-5680
+2000.00
+1
+12348
+Ana Pereira
+32132132100
+(11) 91234-5681
+300.00
+1
+12349
+Luiz Costa
+65465465400
+(11) 91234-5682
+500.25
+1
+12350
+Fernanda Lima
+98798798700
+(11) 91234-5683
+750.10
+2
+12346
+3
+12346
+300.00
+4
+12346
+200.00
+5
+2
+12347
+3
+12347
+400.00
+4
+12347
+1000.00
+5
+6
